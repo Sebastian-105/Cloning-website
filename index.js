@@ -3,7 +3,7 @@ const https = require("https")
 const app = express()
 
 app.get("/*", (req, res, next) => {
-  https.request(new URL("https://crazygames.com/" + discordPath), (resp) => {
+  https.request(new URL("https://crazygames.com/" + req.path), (resp) => {
     res.contentType(resp.headers["content-type"])
     resp.pipe(res)
   }).end()
