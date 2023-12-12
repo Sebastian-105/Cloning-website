@@ -4,7 +4,7 @@ const app = express()
 app.get("/*", (req, res, next) => {
   //const pathSegments = req.path.split('/');
  // const rocketPath = pathSegments[2]
-  https.request(new URL("https://chess.com" + req.path), (resp) => {
+  https.request(new URL("https://discord.com" + req.path), (resp) => {
     res.contentType(resp.headers["content-type"])
     resp.pipe(res)
   }).end()
