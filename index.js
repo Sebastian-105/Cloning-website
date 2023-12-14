@@ -4,7 +4,7 @@ const app = express()
 app.get("/*", (req, res, next) => {
   //const pathSegments = req.path.split('/');
  // const rocketPath = pathSegments[2]
-  https.request(new URL("https://poki.com/" + req.path), (resp) => {
+  https.request(new URL("https://crazygames.com/" + req.path), (resp) => {
     res.contentType(resp.headers["content-type"])
     resp.pipe(res)
   }).end()
