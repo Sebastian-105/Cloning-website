@@ -7,6 +7,11 @@
       }
     ],
     "routes": [
+        {
+            "src": "/home",
+            "status": 308,
+            "headers": { "Location": "https://sebastian-105.vercel.app" }
+          },
       {
         "src": "/(.*)",
         "dest": "index.js"
