@@ -1,16 +1,13 @@
-const express = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const express = require("express")
+const https = require("https")
+const app = express()
 
-const app = express();
-
-// Define the target URL you want to proxy requests to
-const targetUrl = 'http://rocketbotroyale.winterpixel.io/';
-
-// Create the proxy middleware
-
-
-// Start the Express server
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Proxy server is listening on port ${port}`);
-});
+app.get("/*", (req, res, next) => {
+const pathSegments = req.path.split('/');
+const rocketPath = pathSegments[2]
+  https.request(new URL("https://rocketbotroyale.winterpixel.io/" + req.path), (resp) => {
+    res.contentType(resp.headers["content-type"])
+    resp.pipe(res)
+  }).end()
+})
+app.listen(3000)
